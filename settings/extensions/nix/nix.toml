@@ -68,6 +68,11 @@ from = "860b56be91fb874d48e23a950815969a7b832fbc"
 load = [ "nodePackages", "pnpm", ]
 from = "860b56be91fb874d48e23a950815969a7b832fbc"
 
+[[packages]]
+load = [ "docker", ]
+
+[[packages]]
+load = [ "tree-sitter", ]
 
 # 
 # Python (because node-gyp depends on python)

@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/tree-sitter/tree-sitter-typescript.git"
+    "url": "git+https://github.com/tree-sitter/tree-sitter-typescript.git"
   },
   "author": "Max Brunsfeld",
   "license": "MIT",
@@ -23,13 +23,15 @@
   },
   "scripts": {
     "build": "npm run build-typescript && npm run build-tsx",
+    "build-wasm": "cd typescript && tree-sitter build-wasm && cd ../tsx && tree-sitter build-wasm",
     "build-typescript": "cd typescript && npx tree-sitter generate --no-bindings",
     "build-tsx": "cd tsx && npx tree-sitter generate --no-bindings",
     "test-load": "node -e \"console.log(require('./typescript').name, require('./tsx').name)\"",
     "test": "npm run test-typescript && npm run test-tsx && npm run test-load && script/parse-examples",
     "test-typescript": "cd typescript && npx tree-sitter test",
     "test-tsx": "cd tsx && npx tree-sitter test",
-    "test-windows": "pushd typescript && npx tree-sitter test && popd && pushd tsx && npx tree-sitter test"
+    "test-windows": "pushd typescript && npx tree-sitter test && popd && pushd tsx && npx tree-sitter test",
+    "install": "node-gyp rebuild"
   },
   "tree-sitter": [
     {
@@ -91,5 +93,13 @@
       "injections": "node_modules/tree-sitter-javascript/queries/injections.scm",
       "content-regex": "@flow"
     }
-  ]
+  ],
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/tree-sitter/tree-sitter-typescript/issues"
+  },
+  "homepage": "https://github.com/tree-sitter/tree-sitter-typescript#readme",
+  "directories": {
+    "example": "examples"
+  }
 }
